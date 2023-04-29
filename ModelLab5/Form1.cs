@@ -41,54 +41,52 @@ namespace ModelLab5
         private void Operator1_Tick(object sender, EventArgs e)
         {
             Operator1.Interval = rnd.Next(150, 250);
-            if (queue_cli.Count != 0)
+            if (queue_cli.Count != 0 && queue_cli.Count < 2)
             {
                 queue_cli.Dequeue();
                 queue12.Enqueue(rnd.Next());
-                lids--;
+                
                 listBox1.Items.Add("Клиент принят оператором 1");
             }
             else if (queue_cli.Count > 1)
             {
                 otkaz++;
                 listBox1.Items.Add("Заявка пропущена");
-                lids--;
+                queue_cli.Clear() ;
             }
         }
 
         private void Operator2_Tick(object sender, EventArgs e)
         {
             Operator2.Interval = rnd.Next(300, 500);
-            if (queue_cli.Count != 0)
+            if (queue_cli.Count != 0 && queue_cli.Count < 2)
             {
                 queue_cli.Dequeue();
                 queue12.Enqueue(rnd.Next());
-                lids--;
                 listBox1.Items.Add("Клиент принят оператором 2");
             }
             else if(queue_cli.Count > 1)
             {
                 otkaz++;
                 listBox1.Items.Add("Заявка пропущена");
-                lids--;
+                queue_cli.Clear() ;
             }
         }
 
         private void Operator3_Tick(object sender, EventArgs e)
         {
             Operator3.Interval = rnd.Next(200, 600);
-            if (queue_cli.Count != 0)
+            if (queue_cli.Count != 0 && queue_cli.Count < 2)
             {
                 queue_cli.Dequeue();
                 queue3.Enqueue(rnd.Next());
-                lids--;
                 listBox1.Items.Add("Клиент принят оператором 3");
             }
             else if (queue_cli.Count > 1)
             {
                 otkaz++;
                 listBox1.Items.Add("Заявка пропущена");
-                lids--;
+                queue_cli.Clear();
             }
         }
 
