@@ -12,7 +12,8 @@ namespace ModelLab5
         Queue<int> queue12 = new Queue<int>();
         Queue<int> queue3 = new Queue<int>();
 
-        double otkaz = 0, done = 0, number = 0, lids = 300;
+        double otkaz = 0;
+        int lids = 300;
 
         Random rnd = new Random();
         public Form1()
@@ -22,8 +23,8 @@ namespace ModelLab5
 
         private void Client_Tick(object sender, EventArgs e)
         {
-            Client.Interval = rnd.Next(80, 120);
-            if (lids!=0)
+            Client.Interval = rnd.Next(8, 12);
+            if (lids>=1)
             {
                 queue_cli.Enqueue(rnd.Next());
                 listBox1.Items.Add(lids);
@@ -33,7 +34,7 @@ namespace ModelLab5
 
         private void Operator1_Tick(object sender, EventArgs e)
         {
-            Operator1.Interval = rnd.Next(150, 250);
+            Operator1.Interval = rnd.Next(15, 25);
             if (queue_cli.Count != 0 && queue_cli.Count < 2)
             {
                 queue_cli.Dequeue();
@@ -49,7 +50,7 @@ namespace ModelLab5
 
         private void Operator2_Tick(object sender, EventArgs e)
         {
-            Operator2.Interval = rnd.Next(300, 500);
+            Operator2.Interval = rnd.Next(30, 50);
             if (queue_cli.Count != 0 && queue_cli.Count < 2)
             {
                 queue_cli.Dequeue();
@@ -65,7 +66,7 @@ namespace ModelLab5
 
         private void Operator3_Tick(object sender, EventArgs e)
         {
-            Operator3.Interval = rnd.Next(200, 600);
+            Operator3.Interval = rnd.Next(20, 60);
             if (queue_cli.Count != 0 && queue_cli.Count < 2)
             {
                 queue_cli.Dequeue();
@@ -81,7 +82,7 @@ namespace ModelLab5
 
         private void Comp1_Tick(object sender, EventArgs e)
         {
-            Comp1.Interval = 150;
+            Comp1.Interval = 15;
             if (queue12.Count != 0)
             {
                 queue12.Dequeue();
@@ -95,11 +96,10 @@ namespace ModelLab5
 
         private void Comp2_Tick(object sender, EventArgs e)
         {
-            Comp2.Interval = 300;
+            Comp2.Interval = 30;
             if (queue3.Count != 0)
             {
                 queue3.Dequeue();
-                done++;
             }
             listBox2.Items.Clear();
             listBox3.Items.Clear();
@@ -131,16 +131,16 @@ namespace ModelLab5
             
             Task.Run(() =>
             {
-                while (lids != 0)
+                while (lids > 0)
                 {
                     int c = 0; c++;
                 }
-                Client.Stop();
-                Operator1.Stop();
-                Operator2.Stop();
-                Operator3.Stop();
-                Comp1.Stop();
-                Comp2.Stop();
+                    Client.Stop();
+                    Operator1.Stop();
+                    Operator2.Stop();
+                    Operator3.Stop();
+                    Comp1.Stop();
+                    Comp2.Stop();
             });
         }
 
