@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ModelLab5
 {
@@ -19,7 +13,6 @@ namespace ModelLab5
         Queue<int> queue3 = new Queue<int>();
 
         int otkaz = 0, done = 0, number = 0, lids = 300;
-
 
         Random rnd = new Random();
         public Form1()
@@ -48,7 +41,7 @@ namespace ModelLab5
                 
                 listBox1.Items.Add("Клиент принят оператором 1");
             }
-            else if (queue_cli.Count > 1)
+             if (queue_cli.Count > 1)
             {
                 otkaz++;
                 listBox1.Items.Add("Заявка пропущена");
@@ -65,7 +58,7 @@ namespace ModelLab5
                 queue12.Enqueue(rnd.Next());
                 listBox1.Items.Add("Клиент принят оператором 2");
             }
-            else if(queue_cli.Count > 1)
+            if(queue_cli.Count > 1)
             {
                 otkaz++;
                 listBox1.Items.Add("Заявка пропущена");
@@ -82,7 +75,7 @@ namespace ModelLab5
                 queue3.Enqueue(rnd.Next());
                 listBox1.Items.Add("Клиент принят оператором 3");
             }
-            else if (queue_cli.Count > 1)
+            if (queue_cli.Count > 1)
             {
                 otkaz++;
                 listBox1.Items.Add("Заявка пропущена");
@@ -96,9 +89,13 @@ namespace ModelLab5
             if (queue12.Count != 0)
             {
                 queue12.Dequeue();
-                done++;
                 listBox1.Items.Add("Заявка обработана компьютером 1");
             }
+            listBox2.Items.Clear();
+            listBox3.Items.Clear();
+            listBox2.Items.Add($"Количество отказов: {otkaz}");
+            double res = otkaz / 300;
+            listBox3.Items.Add("Вероятность отказа p =  " + res);
         }
 
         private void Comp2_Tick(object sender, EventArgs e)
@@ -110,6 +107,11 @@ namespace ModelLab5
                 done++;
                 listBox1.Items.Add("Заявка обработана компьютером 2");
             }
+            listBox2.Items.Clear();
+            listBox3.Items.Clear();
+            listBox2.Items.Add($"Количество отказов: {otkaz}");
+            double res = otkaz / 300;
+            listBox3.Items.Add("Вероятность отказа p =  " + res);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -148,11 +150,10 @@ namespace ModelLab5
                 Operator3.Stop();
                 Comp1.Stop();
                 Comp2.Stop();
-                listBox1.Items.Add($"Количество отказов: {otkaz}");
-                listBox1.Items.Add($"Количество обработанных заявок: {done}");
             });
-           
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e){}
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e){}
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e){}
     }
 }
