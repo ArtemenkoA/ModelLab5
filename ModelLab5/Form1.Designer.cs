@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Client = new System.Windows.Forms.Timer(this.components);
             this.Operator1 = new System.Windows.Forms.Timer(this.components);
             this.Operator2 = new System.Windows.Forms.Timer(this.components);
@@ -114,6 +115,7 @@
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Моделирование";
             this.Load += new System.EventHandler(this.Form1_Load);
