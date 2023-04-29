@@ -12,7 +12,7 @@ namespace ModelLab5
         Queue<int> queue12 = new Queue<int>();
         Queue<int> queue3 = new Queue<int>();
 
-        int otkaz = 0, done = 0, number = 0, lids = 300;
+        double otkaz = 0, done = 0, number = 0, lids = 300;
 
         Random rnd = new Random();
         public Form1()
@@ -38,8 +38,6 @@ namespace ModelLab5
             {
                 queue_cli.Dequeue();
                 queue12.Enqueue(rnd.Next());
-                
-                listBox1.Items.Add("Клиент принят оператором 1");
             }
              if (queue_cli.Count > 1)
             {
@@ -56,7 +54,6 @@ namespace ModelLab5
             {
                 queue_cli.Dequeue();
                 queue12.Enqueue(rnd.Next());
-                listBox1.Items.Add("Клиент принят оператором 2");
             }
             if(queue_cli.Count > 1)
             {
@@ -73,7 +70,6 @@ namespace ModelLab5
             {
                 queue_cli.Dequeue();
                 queue3.Enqueue(rnd.Next());
-                listBox1.Items.Add("Клиент принят оператором 3");
             }
             if (queue_cli.Count > 1)
             {
@@ -89,7 +85,6 @@ namespace ModelLab5
             if (queue12.Count != 0)
             {
                 queue12.Dequeue();
-                listBox1.Items.Add("Заявка обработана компьютером 1");
             }
             listBox2.Items.Clear();
             listBox3.Items.Clear();
@@ -105,7 +100,6 @@ namespace ModelLab5
             {
                 queue3.Dequeue();
                 done++;
-                listBox1.Items.Add("Заявка обработана компьютером 2");
             }
             listBox2.Items.Clear();
             listBox3.Items.Clear();
@@ -137,13 +131,10 @@ namespace ModelLab5
             
             Task.Run(() =>
             {
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
                 while (lids != 0)
                 {
                     int c = 0; c++;
                 }
-                sw.Stop();
                 Client.Stop();
                 Operator1.Stop();
                 Operator2.Stop();
@@ -152,6 +143,8 @@ namespace ModelLab5
                 Comp2.Stop();
             });
         }
+
+        private void Form1_Load(object sender, EventArgs e){}
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e){}
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e){}
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e){}
